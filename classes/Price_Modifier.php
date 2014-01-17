@@ -13,7 +13,16 @@ class Price_Modifier extends Group_Buying_Controller {
 	
 	public static function init() {
 		// filter the price for the voucher, etc..
-		add_action( 'create_voucher_for_purchase', array( get_class(), 'store_purchase_data_with_voucher'), 10, 3 );
+		// add_action( 'create_voucher_for_purchase', array( __CLASS__, 'store_purchase_data_with_voucher'), 10, 3 );
+		// Filter the reports
+		// add_filter( 'gb_merch_deal_voucher_record_item', array( __CLASS__, 'filter_report_price'), 10, 4 );
+	}
+
+	public function filter_report_price( $data = array(), $voucher, $purchase, $account ) {
+		$product_data = $voucher->get_product_data();
+		$purchase_price = $product_data['unit_price'];
+		$data['price'] = gb_get_formatted_money( $purchase_price );
+		return $data;
 	}
 
 

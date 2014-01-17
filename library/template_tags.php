@@ -10,3 +10,11 @@ function gb_get_voucher_purchase_price( $voucher_id = 0 ) {
 	$purchase_price = $product_data['unit_price'];
 	return apply_filters( 'gb_get_purchase_price', $purchase_price );
 }
+
+function gb_get_purchase_price( $purchase_id = 0, $item_id = 0 ) {
+	if ( !$purchase_id || !$item_id ) {
+		return FALSE;
+	}
+	$purchase = Group_Buying_Purchase::get_instance( $purchase_id );
+	return apply_filters( 'gb_get_purchase_price', $purchase->get_product_unit_price( $item_id ) );
+}
