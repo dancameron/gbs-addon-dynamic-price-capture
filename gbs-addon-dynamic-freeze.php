@@ -11,6 +11,7 @@ Text Domain: group-buying
 */
 
 define( 'GB_DYN_PRICE_CAPTURE_PATH', WP_PLUGIN_DIR . '/' . basename( dirname( __FILE__ ) ) . '/' );
+define ('GB_DYN_PRICE_CAPTURE_URL', plugins_url( '', __FILE__) );
 
 // Load after all other plugins since we need to be compatible with groupbuyingsite
 add_action( 'plugins_loaded', 'gb_dynamic_price_capture_addon' );
