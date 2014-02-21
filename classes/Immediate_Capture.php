@@ -69,7 +69,6 @@ class Immediate_Capture extends Group_Buying_Controller {
 	 * @return void
 	 */
 	private static function save_meta_box_gb_deal_expiration( Group_Buying_Deal $deal, $post_id, $post ) {
-		error_log( 'post: ' . print_r( $_POST, TRUE ) );
 		if ( $deal->has_dynamic_price() ) {
 			if ( isset( $_POST['deal_expiration_never_dyn_mod'] ) && $_POST['deal_expiration_never_dyn_mod'] == 'true' ) {
 				$deal->set_expiration_date( Group_Buying_Deal::NO_EXPIRATION_DATE );
